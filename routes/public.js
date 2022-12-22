@@ -8,6 +8,7 @@ const config = require("../config/db")
 var jwt_secret = config.jwt_secret;
 
 var user = schema.user;
+var api = schema.api;
 
 //token generation
 const createToken = async(id)=>{
@@ -53,10 +54,13 @@ route.post("/login" , async(req,res,next)=>{
      const password= "nandan";
     
      const userData =  await user.findOne({username:username});
-     console.log(userData)
+
      if(userData){
+      
                 const passwordMatch = await user.findOne({password:password}) 
+
                 if(passwordMatch){
+
                       const tokenData = await createToken(userData._id)
                           const userResult = {
                             _id:userData._id,
@@ -87,6 +91,18 @@ route.post("/login" , async(req,res,next)=>{
       }
 
 })
+
+route.post("/all-api", async (req,res,next)=>{
+  try{
+    const result =  await api.find();
+    res.send(result)
+  }catch(error){
+    next();
+  }
+
+})
+
+
 
 
 module.exports = route;
