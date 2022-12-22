@@ -9,7 +9,7 @@ const mongoose = require("mongoose")
             },
             
             password: {
-                type:string,
+                type:String,
                 required: true,
             },
 
@@ -17,7 +17,7 @@ const mongoose = require("mongoose")
             updatedAt: Date
             
     });
-
+  
     
     const apilistSchema = new mongoose.Schema({
         apiname: {
@@ -25,7 +25,7 @@ const mongoose = require("mongoose")
             required: true,
         },
         description: { 
-            type: String.apply, 
+            type: String, 
             required: true,
          },
         imageurl: { 

@@ -24,4 +24,14 @@ function connect(){
     
 }
 
-module.exports = connect
+const jwt_secret = {
+    jwt_secret:"thisismysecretkeyofjwttokenwhichisusedtoconfiguration"
+}
+
+ 
+var config = {
+    "connect": connect,
+    "jwt_secret": jwt_secret.jwt_secret,
+ };
+
+module.exports = config;

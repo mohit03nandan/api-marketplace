@@ -1,15 +1,24 @@
 
 const express = require('express')
-const connect = require("./config/db")
+const config = require("./config/db")
 const Errorhandler = require("./middlewares/errorhandler")
 const app = express();
-connect();
+const public = require("./routes/public")
+
+var connect = config.connect
+connect()
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 
+
+app.use("/public", public );
+
 app.use(Errorhandler);
+
+
+
 
 app.get("/api/health" ,(req,res) =>{
     res.send(`backend server is active status: active & time:${ new Date()}`)
