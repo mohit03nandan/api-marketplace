@@ -27,6 +27,8 @@ const createToken = async(id)=>{
 //signup
 route.post("/signup" , async(req,res,next)=>{
   try{
+
+    
     const userCollection = new user({
         username: "chotu",
         password:"nandan",
@@ -38,7 +40,7 @@ route.post("/signup" , async(req,res,next)=>{
      await userCollection.save();
 
  
-     res.send("Collection created successfully!") 
+     res.send("Signup successfully!") 
 
     }catch(error) {
         next();

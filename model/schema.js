@@ -20,7 +20,7 @@ const mongoose = require("mongoose")
   
     
     const apilistSchema = new mongoose.Schema({
-        apiname: {
+        apiName: {
             type: String,
             required: true,
         },
